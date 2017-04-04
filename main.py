@@ -214,7 +214,7 @@ while True:
             raise SystemExit
 
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LSHIFT:
+            if event.key == pygame.K_w:
                 player.vy = JUMP_VELOCITY
             if event.key == pygame.K_BACKQUOTE:
                 paused=True
@@ -223,12 +223,12 @@ while True:
                         if event.type == pygame.KEYDOWN:
                             if event.key == pygame.K_BACKQUOTE:
                                 paused=False
-            if event.key == pygame.K_z:
+            if event.key == pygame.K_j:
                 if power >= POWER_FIREBALL:
                     power -= POWER_FIREBALL
                     fireballs.append(Fireball(player.pos[0],player.pos[1],-1))
                     fireballs.append(Fireball(player.pos[0],player.pos[1],1))
-            if event.key == pygame.K_x:
+            if event.key == pygame.K_k:
                 if power >= POWER_SHOCKWAVE:
                     power -= POWER_SHOCKWAVE
                     for enemy in enemies[:]:
@@ -242,9 +242,9 @@ while True:
                             enemy.vx = (random())*MAX_HURTLE_VX*(-1 if enemy.pos[0]<player.pos[0] else 1)
                     shrapnel.append(Bang(player.pos[0],player.pos[1],(255,255,0),100,10))
     p = pygame.key.get_pressed()
-    if p[pygame.K_LEFT]:
+    if p[pygame.K_a]:
         player.do_walk(-1)
-    elif p[pygame.K_RIGHT]:
+    elif p[pygame.K_d]:
         player.do_walk(1)
         
     for enemy in enemies:
